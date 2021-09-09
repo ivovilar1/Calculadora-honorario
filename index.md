@@ -7,69 +7,206 @@
     <title>Calculadora Honorário</title>
     <script>
         function calcular(){
-                var economia = document.getElementById("economia");
-                var contabil = parseInt(document.getElementById("valorContabil").value);
+            var economia = document.getElementById("economia");
+            var contabil = parseInt(document.getElementById("valorContabil").value);
                if(contabil > 0){
-                var plano = parseInt(document.getElementById("plano").value);
-                var planoVisual = document.getElementById("plano"); // variavel para usar com o innerHMTL
+                    var plano = parseInt(document.getElementById("plano").value);
+                    var planoVisual = document.getElementById("plano"); // variavel para usar com o innerHMTL
                 
 
-                var selectRegime = document.getElementById("regime");
-
+                    var selectRegime = document.getElementById("regime");
+                    var selectServico = document.getElementById("servico");
                 
                 
-                var opcaoReg = selectRegime.options[selectRegime.selectedIndex].value;
+                    var opcaoReg = selectRegime.options[selectRegime.selectedIndex].value;
+                    var opcaoSer = selectServico.options[selectServico.selectedIndex].value;
 
 
-                var calcularValorSocio = calcularSocio();
-                var calcularValorFun = calculcarFuncionario();
+                    var calcularValorSocio = calcularSocio();
+                    var calcularValorFun = calculcarFuncionario();
                 
-                 if(opcaoReg == 1){
-                     plano = calcularValorSocio + calcularValorFun + 166;
-                     var converterNumero = plano.toFixed(2);
-                     //planoVisual.innerHTML = "R$" + plano.toFixed(2) ;
-                      planoVisual.innerHTML = "R$ " +  converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
 
+                
+                        if(opcaoReg == 1 && opcaoSer == 1){
+                            if(contabil < 379.99){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)" ;
+                                var mensalidade = 380;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 380 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
 
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
 
-                    let custoTotal = contabil * 12;
-                    let planoEconomia = plano * 12;
-                    let economiaTotal = custoTotal - planoEconomia;
-                    var converterNumero1 = economiaTotal.toFixed(2);
-                    economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
-                    //economia.innerHTML = "R$" + economiaTotal.toFixed(2);
-                 }else{
-                    plano = calcularValorSocio + calcularValorFun + 219.90;
-                     //planoVisual.innerHTML = "R$" + plano.toFixed(2) ;
-                     var converterNumero = plano.toFixed(2);
-                     planoVisual.innerHTML = "R$ " +  converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }
 
-                    let custoTotal = contabil * 12;
-                    let planoEconomia = plano * 12;
-                    let economiaTotal = custoTotal - planoEconomia;
-                    var converterNumero1 = economiaTotal.toFixed(2);
-                    economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano" ;
-                    //economia.innerHTML = "R$" + economiaTotal.toFixed(2);
-                 }
-               
+                        }if(opcaoReg == 1 && opcaoSer == 2){
+                            if(contabil < 166){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)" ;
+                                var mensalidade = 166;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun + 166 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+
+                        }if(opcaoReg == 1 && opcaoSer == 3){
+                            if(contabil < 379.99){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)" ;
+                                var mensalidade = 380;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 380 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+
+                        }if(opcaoReg==2 && opcaoSer ==1 ){
+                            if(contabil < 219.89){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)";
+                                var mensalidade = 219.90;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 219.90 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+                            
+
+                        }if(opcaoReg==2 && opcaoSer ==2 ){
+                            if(contabil < 219.89){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)";
+                                var mensalidade = 219.90;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 219.90 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+                            
+                        }if(opcaoReg==2 && opcaoSer ==3 ){
+                            if(contabil < 219.89){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)";
+                                var mensalidade = 219.90;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 219.90 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+                            
+                        }if(opcaoReg==3 && opcaoSer ==1 ){
+                            if(contabil < 54.89){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)";
+                                var mensalidade = 54.90;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 54.90 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+                        }if(opcaoReg==3 && opcaoSer ==2 ){
+                            if(contabil < 54.89){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)";
+                                var mensalidade = 54.90;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 54.90 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+                            
+                        }if(opcaoReg==3 && opcaoSer ==3 ){
+                            if(contabil < 54.89){
+                                economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)";
+                                var mensalidade = 54.90;
+                                planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                            }else{
+                                plano = calcularValorSocio +calcularValorFun  + 54.90 ;
+                                var converterNumero = plano.toFixed(2);
+                                planoVisual.innerHTML = "R$" + converterNumero.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+
+                                let custoTotal = contabil * 12;
+                                let planoEconomia = plano * 12;
+                                let economiaTotal = custoTotal - planoEconomia;
+                                var converterNumero1 = economiaTotal.toFixed(2);
+                                economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+
+                            }
+                        }
                }else{
-                   alert("Por favor, insira o valor pago na contabilidade.");
+                   alert("Por favor, coloque o valor pago na sua contabilidade.")
                }
-               
-           
+            }
               
                 
-        }
+        
             function calcularSocio(){
                 var selectSocio = document.getElementById("socio");
                 var opcaoValor = selectSocio.options[selectSocio.selectedIndex].value // pegar valor dos selects
 
-                if(opcaoValor != 1){
-                    var valorSocio = opcaoValor * 28.90;
-                    return valorSocio
-                }else{
+                if(opcaoValor ==1){
                     return 0;
-                }
+                }else{
+                    var valorSoc = opcaoValor * 28.90;
+                    return valorSoc;
+                }   
+                
             }
         
 
@@ -344,10 +481,10 @@ campo.value = vr.substr(0, tam - 14) + caracter + vr.substr(tam - 14, 3) + carac
         <div class="entrada-linha2">
             <div class="entrada-coluna">
                 <label>Qual o serviço?</label>
-                <select>
-                    <option value="Abrir empresa">Abertura</option>
-                    <option value="Migrar minha contabilidade">Quero trocar de contador</option>
-                    <option value="Mudar de MEI para ME">Mei</option>
+                <select id="servico">
+                    <option value="1">Comércio</option>
+                    <option value="2">Serviço</option>
+                    <option value="3">Comércio e Serviço</option>
                 </select>
             </div>
             <div class="entrada-coluna">
@@ -355,6 +492,7 @@ campo.value = vr.substr(0, tam - 14) + caracter + vr.substr(tam - 14, 3) + carac
                 <select id="regime">
                     <option value="1">Simples</option>
                     <option value="2">Presumido</option>
+                    <option value="3">MEI</option>
                 </select>
             </div>
             
@@ -364,7 +502,7 @@ campo.value = vr.substr(0, tam - 14) + caracter + vr.substr(tam - 14, 3) + carac
             <div class="entrada-coluna">
                 <label>Quantos sócios?</label>
                 <select id="socio">
-                    <option value="1">Sou o único sócio</option>
+                    <option value="1">Sou o único dono</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -374,7 +512,7 @@ campo.value = vr.substr(0, tam - 14) + caracter + vr.substr(tam - 14, 3) + carac
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
-                    <option value="">Mais sócios</option>
+                    <option value="11">Mais sócios</option>
                 </select>
         </div>
             
