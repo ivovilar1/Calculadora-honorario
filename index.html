@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Honorário</title>
     <script>
+        
+    
         function calcular(){
             var economia = document.getElementById("economia");
-            var contabil = parseInt(document.getElementById("valorContabil").value);
-               if(contabil > 0){
+            var contabil = parseFloat(document.getElementById("valorContabil").value.replace(/\./g,"").replace(",","."))
+            
+            
+                if(contabil > 0){
                     var plano = parseInt(document.getElementById("plano").value);
                     var planoVisual = document.getElementById("plano"); // variavel para usar com o innerHMTL
                 
@@ -32,6 +36,7 @@
                                 economia.innerHTML = "Entre em contato conosco, temos uma oferta especial para você =)" ;
                                 var mensalidade = 380;
                                 planoVisual.innerHTML = "R$" + mensalidade.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " /Mês";
+                                
                             }else{
                                 plano = calcularValorSocio +calcularValorFun  + 380 ;
                                 var converterNumero = plano.toFixed(2);
@@ -42,6 +47,7 @@
                                 let economiaTotal = custoTotal - planoEconomia;
                                 var converterNumero1 = economiaTotal.toFixed(2);
                                 economia.innerHTML = "R$ " + converterNumero1.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " /Ano";
+                                
                                 
                             }
 
@@ -200,7 +206,7 @@
                 var selectSocio = document.getElementById("socio");
                 var opcaoValor = selectSocio.options[selectSocio.selectedIndex].value // pegar valor dos selects
 
-                if(opcaoValor ==1){
+                if(opcaoValor ==0){
                     return 0;
                 }else{
                     var valorSoc = opcaoValor * 28.90;
@@ -411,7 +417,8 @@
             <div class="entrada-coluna">
                 <label>Quantos sócios?</label>
                 <select id="socio">
-                    <option value="1">Sou o único dono</option>
+                    <option value="0">Sou o único dono</option>
+                    <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
